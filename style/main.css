@@ -1,0 +1,19 @@
+.studentEntry {
+    display: flex;
+    align-items: center;
+}
+
+.studentInfo {
+    padding-left:20px;
+}
+
+.studentInfo h2 {
+    text-align: center;
+    margin-block: 0px;
+}
+
+.studentInfo h3 {
+    text-align: center;
+    margin-block: 0px;
+    font-weight:normal;
+}
