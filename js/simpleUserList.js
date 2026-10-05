@@ -36,3 +36,24 @@ const userList = [
         "nat": "US"
     }
 ];
+
+function addStudents(){
+    const container = document.getElementById("student_container");
+
+    for(let student of userList){
+        const entry = `
+            <div class="studentEntry">
+                <div class="studentPic">
+                    <img src="${student.bioPic}" alt="image of ${student.userFullName}" height="128" width="128">
+                </div>
+                <div class="studentInfo">
+                    <h2>${student.userFullName}</h2>
+                    <h3>${student.email}</h3>
+                    <h3>${student.cell}</h3>
+                </div>
+            </div>
+        `
+        console.log(entry);
+        container.innerHTML += entry;
+    }
+}
