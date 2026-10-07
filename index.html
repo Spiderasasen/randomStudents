@@ -5,9 +5,13 @@
     <title>Student List Example</title>
     <link rel="stylesheet" href="style/main.css" type="text/css">
     <script src="js/simpleUserList.js"></script>
+    <script src="js/studentFunction.js"></script>
+    <script src="js/creating_a_random_user.js"></script>
 </head>
 <body>
 <button onclick="addStudents()">Add Students</button>
+<button onclick="callAPI(5)">Get Students from API</button>
+<button onclick="callAPIWithFetch(5)">calling with fetch</button>
 <h1>Student List</h1>
 <div id="student_container">
     <div class="studentEntry">
