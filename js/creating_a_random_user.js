@@ -8,9 +8,64 @@ function callAPI(numUsers) {
     console.log("After Call to API");
 }
 
+
+
+// function callAPIWithFetch(numUsers) {
+//     const responsePromise = fetch("https://randomuser.me/api?results=" + numUsers + "&nat=us");
+//     console.log(responsePromise);
+//     responsePromise.then(fetchSuccessFunction)
+//         .then(processJSONResponse)
+//         .catch(fetchFailureFunction);
+// }
+
 function callAPIWithFetch(numUsers) {
     const responsePromise = fetch("https://randomuser.me/api?results=" + numUsers + "&nat=us");
     console.log(responsePromise);
+
+    responsePromise.then(responseObject =>{
+        if (responseObject.status === 200) {
+            console.log("Success:",responseObject);
+            const jsonResponse = responseObject.json();
+            console.log("JSON:",jsonResponse);
+            return jsonResponse;
+        }
+        else{
+            console.log("Error:",responseObject);
+        }
+        })
+        .then(jsonResponse =>{
+            console.log("JSON:",jsonResponse);
+            const apiUserList = jsonResponse.results;
+            const mappedStudentList = apiUserList.map(apiStudent => {
+                return mapAPIUserToOutUSer(apiStudent);
+            });
+            addStudents(mappedStudentList);
+        })
+        .catch(err => console.log(err));
+
+}
+
+
+//you got a response back from http
+function fetchSuccessFunction(responseObject) {
+    if (responseObject.status === 200) {
+        console.log("Success:",responseObject);
+        const jsonResponse = responseObject.json();
+        console.log("JSON:",jsonResponse);
+        return jsonResponse;
+    }
+    else{
+        console.log("Error:",responseObject);
+    }
+}
+
+function processJSONResponse(jsonResponse) {
+    console.log("JSON:",jsonResponse);
+}
+
+//true code error
+function fetchFailureFunction(response) {
+    console.log("Error:",response);
 }
 
 function processUserResults(event) {
